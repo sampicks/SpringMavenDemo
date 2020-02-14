@@ -1,0 +1,14 @@
+pom.xml -> This file is used to declare/download all the dependencies and build plugins. Exists in root level.
+web.xml -> This file is used to define Dispatcher servlet along with url pattern and todo-servlet.xml. [webapp/WEB-INF/web.xml]
+todo-servlet.xml -> It's file name is defined in web.xml. It is user defined file. This file is used to define ViewResolver.
+
+
+
+
+DispatcherServlet receives HTTP Request.
+DispatcherServlet identifies the right Controller based on the URL.
+Controller executes Business Logic.
+Controller returns a) Model b) View Name Back to DispatcherServlet.
+DispatcherServlet identifies the correct view (ViewResolver).
+DispatcherServlet makes the model available to view and executes it.
+DispatcherServlet returns HTTP Response Back.

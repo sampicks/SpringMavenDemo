@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:21:21:59 +0530] "GET /spring-mvc/login HTTP/1.1" 200 376 http-bio-8080-exec-2 193
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:21:21:59 +0530] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-3 4
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:21:22:08 +0530] "POST /spring-mvc/loginCheck HTTP/1.1" 200 137 http-bio-8080-exec-5 76
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:21:32:13 +0530] "POST /spring-mvc/loginCheck HTTP/1.1" 200 137 http-bio-8080-exec-7 84
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:21:35:51 +0530] "POST /spring-mvc/loginCheck HTTP/1.1" 200 143 http-bio-8080-exec-9 88
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:23:03:35 +0530] "POST /spring-mvc/loginCheck HTTP/1.1" 200 447 http-bio-8080-exec-2 844
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:23:03:43 +0530] "POST /spring-mvc/loginCheck HTTP/1.1" 200 145 http-bio-8080-exec-2 7
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:23:03:46 +0530] "POST /spring-mvc/loginCheck HTTP/1.1" 200 447 http-bio-8080-exec-2 5
