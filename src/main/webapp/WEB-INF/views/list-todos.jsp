@@ -8,5 +8,8 @@
 Hi ${username} <br/>
 <H1>Your Todos</H1><br/>
  ${todoList}
+ <br/>
+ 
+ Click to <a href="/add-todo">Add</a> more Todos.
 </body>
 </html>
