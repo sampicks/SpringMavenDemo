@@ -5,6 +5,7 @@
 <title>Todos for ${name}</title>
 </head>
 <body>
+Hi ${username} <br/>
 <H1>Your Todos</H1><br/>
  ${todoList}
 </body>

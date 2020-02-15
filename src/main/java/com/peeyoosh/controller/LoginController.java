@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.peeyoosh.service.UserAuthService;
 
 @Controller
+@SessionAttributes("username")
 public class LoginController {
 
 	@Autowired	// Set the instance by spring - auto wiring
@@ -42,6 +44,7 @@ public class LoginController {
 			/**
 			 * whatever you put in the model, dispatcher servlet make it (modelmap)
 			 * available to view i.e. jsp file.
+			 * Also it available into session scope.
 			 */
 			model.put("username", name);
 			return "Welcome";
