@@ -37,4 +37,12 @@ public class ToDoController {
 //		return "list-todos"; /** It will simply return the file name hence no attribute is set into list-todos.jsp file */
 		return "redirect:list-todos"; /** It is redirecting the url hence showTodoList method will process it*/
 	}
+	
+	@RequestMapping(value = "/delete-todo", method = RequestMethod.GET)
+	public String deleteTodo(ModelMap modelMap,@RequestParam int id) {
+		modelMap.clear(); // http://localhost:8080/list-todos?username=Peeyoosh : username=Peeyoosh parameter will be removed by this.
+		service.deleteTodo(id);
+		return "redirect:list-todos"; /** It is redirecting the url hence showTodoList method will process it*/
+	}
+	
 }
