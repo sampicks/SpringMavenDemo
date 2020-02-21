@@ -34,7 +34,7 @@ public class ToDoController {
 	public String addTodoAndRedirect(ModelMap modelMap, @RequestParam String desc) {
 		service.addTodo("Peeyoosh", desc, new Date(), false);
 		modelMap.clear(); // It will protect to append query string to the url.
-//		return "list-todos"; /** It will simply return the file name hence no attribute is set into listtodo file */
+//		return "list-todos"; /** It will simply return the file name hence no attribute is set into list-todos.jsp file */
 		return "redirect:list-todos"; /** It is redirecting the url hence showTodoList method will process it*/
 	}
 }

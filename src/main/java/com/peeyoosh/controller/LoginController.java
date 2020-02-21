@@ -42,9 +42,9 @@ public class LoginController {
 	public String handleLoginRequest(@RequestParam String name, @RequestParam String password, ModelMap model) {
 		if (userAuthService.isUserValid(name, password)) {
 			/**
-			 * whatever you put in the model, dispatcher servlet make it (modelmap)
+			 * whatever you put in the model, dispatcher servlet make it (ModelMap)
 			 * available to view i.e. jsp file.
-			 * Also it available into session scope.
+			 * Also it available into session scope if you define session.
 			 */
 			model.put("username", name);
 			return "Welcome";

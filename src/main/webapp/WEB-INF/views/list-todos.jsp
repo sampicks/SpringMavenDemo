@@ -1,15 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<!-- import jstl core library -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Todos for ${name}</title>
+<title>Todos for ${username}</title>
+<link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
-Hi ${username} <br/>
-<H1>Your Todos</H1><br/>
- ${todoList}
- <br/>
- 
- Click to <a href="/add-todo">Add</a> more Todos.
+	Hi ${username}
+	<br />
+	<div class="container">
+		<caption>Your Todos are</caption>
+		<table class="table table-striped">
+
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Date</th>
+					<th>Completed</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<c:forEach items="${todoList}" var="todo">
+					<tr>
+						<td>${todo.desc}</td>
+						<td>${todo.targetDate}</td>
+						<td>${todo.done}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+
+	<div>
+		Click to <a class="button" href="/add-todo">Add</a> more Todos.
+	</div>
+
+	<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
