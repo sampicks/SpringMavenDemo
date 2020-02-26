@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Todos for ${username}</title>
+<title>Todo List for ${username}</title>
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 </head>
@@ -24,13 +24,14 @@
 				</tr>
 			</thead>
 
-			<tbody>;
+			<tbody>
 				<c:forEach items="${todoList}" var="todo">
 					<tr>
 						<td>${todo.desc}</td>
 						<td>${todo.targetDate}</td>
 						<td>${todo.done}</td>
-						<td><a class="btn btn-danger" href="/delete-todo?id=${todo.id}">Delete</a></td>
+						<td><a class="btn btn-success" href="/update-todo?id=${todo.id}">Update</a> <a
+							class="btn btn-danger" href="/delete-todo?id=${todo.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -38,7 +39,8 @@
 	</div>
 
 	<div>
-		Click to <a class="btn btn-success" href="/add-todo">Add</a> more Todos.
+		Click to <a class="btn btn-success" href="/add-todo">Add</a> more
+		Todos.
 	</div>
 
 	<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
