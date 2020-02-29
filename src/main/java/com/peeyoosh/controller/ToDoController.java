@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -34,13 +36,22 @@ public class ToDoController {
 	}
 	@RequestMapping(value = "/list-todos", method = RequestMethod.GET)
 	public String showTodoList(ModelMap modelMap) {
-		modelMap.addAttribute("todoList", service.retrieveTodos("Peeyoosh"));
+		modelMap.addAttribute("todoList", service.retrieveTodos(getLoggedInUsername()));
 		return "list-todos";
+	}
+	private String getLoggedInUsername() {
+		Object principal = SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		// principal object is logged in user object.
+		if (principal instanceof UserDetails)
+			return ((UserDetails) principal).getUsername();
+
+		return principal.toString();
 	}
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
 	public String addTodo(ModelMap modelMap) {
-		modelMap.addAttribute("todo", new Todo(0, "Peeyoosh", "", new Date(), false));
+		modelMap.addAttribute("todo", new Todo(0, getLoggedInUsername(), "", new Date(), false));
 		/**
 		 * In add-todo.jsp form section we are not defining action hence (previous url)
 		 * /add-todo action will be continue with form add-todo.jsp
@@ -57,7 +68,7 @@ public class ToDoController {
 		if (bindingResult.hasErrors()) {
 			return "add-todo";
 		}
-		service.addTodo("Peeyoosh", todo.getDesc(), new Date(), false);
+		service.addTodo(getLoggedInUsername(), todo.getDesc(), new Date(), false);
 		modelMap.clear(); /** It will protect to append query string to the url. */
 		/**
 		 * It will simply return the file name hence no attribute is set into
@@ -79,7 +90,7 @@ public class ToDoController {
 		if (bindingResult.hasErrors()) {
 			return "add-todo";
 		}
-		todo.setUser("Peeyoosh");
+		todo.setUser(getLoggedInUsername());
 		service.updateTodo(todo);
 		modelMap.clear();
 		return "redirect:list-todos";

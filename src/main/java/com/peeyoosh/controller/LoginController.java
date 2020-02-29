@@ -15,13 +15,13 @@ import com.peeyoosh.service.UserAuthService;
 @SessionAttributes("username")
 public class LoginController {
 
-	@Autowired	// Set the instance by spring - auto wiring
+	@Autowired // Set the instance by spring - auto wiring
 	UserAuthService userAuthService;
 
 	/**
-	 * 1. Anything starts with /spring-mvc/* url it goes to dispatcher servlet. 
-	 * 2. /hello with redirect to sayHello() method defined in LoginController 
-	 * 3. since @ResponseBody is defined, string will be returned as response to
+	 * 1. Anything starts with /spring-mvc/* url it goes to dispatcher servlet. 2.
+	 * /hello with redirect to sayHello() method defined in LoginController 3.
+	 * since @ResponseBody is defined, string will be returned as response to
 	 * browser.
 	 * 
 	 * @return
@@ -43,8 +43,8 @@ public class LoginController {
 		if (userAuthService.isUserValid(name, password)) {
 			/**
 			 * whatever you put in the model, dispatcher servlet make it (ModelMap)
-			 * available to view i.e. jsp file.
-			 * Also it available into session scope if you define session.
+			 * available to view i.e. jsp file. Also it available into session scope if you
+			 * define session.
 			 */
 			model.put("username", name);
 			return "Welcome";
@@ -52,6 +52,11 @@ public class LoginController {
 			model.put("errorMessage", "Invalid user credentials!!!");
 			return "LoginSpringMvc";
 		}
+	}
 
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String handleDefaultRequest(ModelMap modelMap) {
+		modelMap.addAttribute("username", "Peeyoosh");
+		return "Welcome";
 	}
 }

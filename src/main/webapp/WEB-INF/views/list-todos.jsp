@@ -8,6 +8,7 @@ Hi ${username}
 
 		<thead>
 			<tr>
+				<th>Username</th>
 				<th>Description</th>
 				<th>Date</th>
 				<th>Completed</th>
@@ -18,6 +19,7 @@ Hi ${username}
 		<tbody>
 			<c:forEach items="${todoList}" var="todo">
 				<tr>
+				<td>${todo.user}</td>
 					<td>${todo.desc}</td>
 					<td><format:formatDate value="${todo.targetDate}"
 							pattern="dd/MMM/yyyy" /></td>
