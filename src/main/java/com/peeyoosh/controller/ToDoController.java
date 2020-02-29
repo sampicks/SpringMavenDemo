@@ -3,8 +3,11 @@ package com.peeyoosh.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,12 +16,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.peeyoosh.exceptionhandle.ExceptionController;
 import com.peeyoosh.model.Todo;
 import com.peeyoosh.service.ToDoService;
 
@@ -26,6 +31,7 @@ import com.peeyoosh.service.ToDoService;
 @SessionAttributes("username")
 public class ToDoController {
 
+	private Log logger = LogFactory.getLog(ExceptionController.class);
 	@Autowired
 	private ToDoService service;
 
@@ -106,4 +112,15 @@ public class ToDoController {
 		return "redirect:list-todos"; /** It is redirecting the url hence showTodoList method will process it */
 	}
 
+	/**
+	 * It handles exception occurred in ToDoController only
+	 * @param req
+	 * @param exception
+	 * @return
+	 */
+	@ExceptionHandler(value = Exception.class)
+	public String handleError(HttpServletRequest req, Exception exception) {
+		logger.error("Request: " + req.getRequestURL() + " raised " + exception);
+		return "error";
+	}
 }

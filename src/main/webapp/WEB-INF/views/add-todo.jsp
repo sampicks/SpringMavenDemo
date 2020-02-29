@@ -19,5 +19,4 @@
 		<button type="submit" class="btn btn-success">Submit</button>
 	</sform:form>
 </div>
-
 <%@ include file="common/footer.jspf"%>
