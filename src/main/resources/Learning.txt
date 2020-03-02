@@ -12,3 +12,6 @@ Controller returns a) Model b) View Name Back to DispatcherServlet.
 DispatcherServlet identifies the correct view (ViewResolver).
 DispatcherServlet makes the model available to view and executes it.
 DispatcherServlet returns HTTP Response Back.
+
+
+To run application in French : localhost:8080?language=Fr

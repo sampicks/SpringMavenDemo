@@ -3,15 +3,15 @@
 Hi ${username}
 <br />
 <div class="container">
-	<caption>Your Todos are</caption>
+	<caption><springLocale:message code="todo.caption" /></caption>
 	<table class="table table-striped">
 
 		<thead>
 			<tr>
-				<th>Username</th>
-				<th>Description</th>
-				<th>Date</th>
-				<th>Completed</th>
+				<th><springLocale:message code="todo.username" /></th>
+				<th><springLocale:message code="todo.description" /></th>
+				<th><springLocale:message code="todo.date" /></th>
+				<th><springLocale:message code="todo.complete" /></th>
 				<th></th>
 			</tr>
 		</thead>
